@@ -1,0 +1,29 @@
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#090909"><meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon.svg">
+<link rel="stylesheet" href="style.css"><title>Photo Booth</title></head><body>
+<main id="app">
+<section id="home" class="screen active"><div class="home-card"><div class="icon">📸</div><h1>PHOTO BOOTH</h1><p id="homeEvent">My Event</p><button id="startBtn" class="primary big">START</button><button id="settingsBtn" class="ghost">⚙ Operator Settings</button></div></section>
+<section id="booth" class="screen"><video id="video" autoplay playsinline muted></video><canvas id="canvas" hidden></canvas>
+<div class="top"><button id="exitBtn" class="round">×</button><div id="badge" class="badge">My Event</div></div><div id="countdown" class="countdown"></div>
+<div class="bottom"><button id="takeBtn" class="shutter">TAKE PHOTO</button></div>
+<div id="error" class="modal hidden"><div class="panel"><h2>Camera unavailable</h2><p id="errorText"></p><button id="errorClose" class="primary">Close</button></div></div></section>
+<section id="result" class="screen"><div class="result"><h2>Preview</h2><img id="resultImage"><p id="status"></p><div class="actions"><button id="retakeBtn" class="ghost">Retake</button><button id="saveBtn" class="primary">Save / Share</button></div></div></section>
+<section id="settings" class="screen"><div class="settings"><header><h2>Operator Settings</h2><button id="settingsClose" class="round dark">×</button></header>
+<label>Event name<input id="eventName" maxlength="60"></label><label>Countdown<select id="countdownSetting"><option>0</option><option>1</option><option>2</option><option>3</option><option>5</option><option>10</option></select></label>
+<label>Template
+<select id="templateSetting">
+<option>Classic</option><option>Birthday</option><option>Minimal</option>
+</select>
+</label>
+<div class="customTemplates">
+  <h3>Custom Templates</h3>
+  <p>Upload PNG/JPG overlays. Transparent PNGs work best. The template is placed over the captured photo at full canvas size.</p>
+  <input id="templateUpload" type="file" accept="image/png,image/jpeg" multiple>
+  <div id="templateGallery"></div>
+</div>
+<label class="toggle">Save original capture <input id="originalSetting" type="checkbox"></label>
+<div class="notice">The app requests the highest camera resolution Safari exposes. It prefers the browser still-photo API when available and otherwise captures at the camera stream's negotiated resolution.</div>
+<button id="resetBtn" class="ghost wide">Reset Settings</button></div></section>
+</main><script src="app.js"></script></body></html>
